@@ -1,8 +1,16 @@
 <template>
-  <div>
-    <h2>{{ title }}</h2>
-    <p>Rows: {{ rowsCount }}</p>
-    <p>Columns: {{ columnsCount }}</p>
+  <div class="playboard">
+    <div class="title">{{ title }}</div>
+
+    <div class="grid-container">
+      <div v-for="row in rowsCount" :key="'row-' + row" class="line">
+        <div
+          v-for="column in columnsCount"
+          :key="'cell-' + row + '-' + column"
+          class="cell"
+        ></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,4 +34,38 @@ export default {
 };
 </script>
 
-<!-- You can add styles here if needed -->
+<style lang="scss" scoped>
+.playboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  padding: 10px;
+}
+.line {
+  margin: 0px;
+  width: fit-content;
+  display: flex;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  & + & {
+    border-top: none;
+  }
+}
+.cell {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  & + & {
+    border-left: none;
+  }
+  height: 3vw;
+  width: 3vw;
+}
+</style>

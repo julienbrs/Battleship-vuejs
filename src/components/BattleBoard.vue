@@ -1,7 +1,7 @@
 <template>
   <div class="battle-board">
     <div class="title">BattleShip</div>
-    <PlayBoard title="Player" :columnsCount="10" :rowsCount="10" />
+    <PlayBoard title="Player 10x10" :columnsCount="10" :rowsCount="10" />
   </div>
 </template>
 
